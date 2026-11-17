@@ -32,6 +32,11 @@ const InvoiceSchema = new mongoose.Schema({
     billingAddress: {
       type: String,
       required: [true, 'Please add billing address']
+    },
+    gstin: {
+      type: String,
+      trim: true,
+      default: ''
     }
   },
   items: [{
@@ -54,6 +59,10 @@ const InvoiceSchema = new mongoose.Schema({
       required: true,
       min: 1
     },
+    denomination: {
+      type: String,
+      default: 'pieces'
+    },
     gst: {
       type: Number,
       default: 0,
@@ -75,23 +84,43 @@ const InvoiceSchema = new mongoose.Schema({
     subtotal: {
       type: Number,
       required: true,
-      min: 0
+      min: 0,
+      default: 0
     },
     totalGST: {
       type: Number,
       required: true,
-      min: 0
+      min: 0,
+      default: 0
     },
     totalDiscount: {
       type: Number,
       required: true,
-      min: 0
+      min: 0,
+      default: 0
     },
     grandTotal: {
       type: Number,
       required: true,
-      min: 0
+      min: 0,
+      default: 0
     }
+  },
+  gst: {
+    type: Number,
+    default: 18,
+    min: 0,
+    max: 100
+  },
+  discount: {
+    type: Number,
+    default: 0,
+    min: 0
+  },
+  discountType: {
+    type: String,
+    enum: ['percentage', 'fixed'],
+    default: 'fixed'
   },
   createdAt: {
     type: Date,

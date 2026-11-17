@@ -1,161 +1,221 @@
-# MERN Stack Application
+# M MARINE SERVICES - Invoice Management System
 
-A full-stack application built with MongoDB, Express, React, and Node.js.
+🚢 A professional invoice management system for marine engineering solutions and turnkey projects.
 
-## Project Structure
+## 🌊 About M Marine Services
 
-```
-mern-app/
-├── client/                 # React frontend
-│   ├── public/
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── App.css
-│   │   ├── index.js
-│   │   └── index.css
-│   └── package.json
-├── server/                 # Node.js backend
-│   ├── config/
-│   │   └── db.js          # MongoDB connection
-│   ├── controllers/
-│   │   └── sampleController.js
-│   ├── models/
-│   │   └── Sample.js
-│   ├── routes/
-│   │   └── api.js
-│   ├── .env
-│   ├── server.js
-│   └── package.json
-├── package.json           # Root package.json
-└── README.md
-```
+**M MARINE SERVICES** provides comprehensive marine engineering solutions including:
+- Marine Engineering Solutions
+- Engineering Turnkey Projects
+- Mechanical, Electrical, and Safety Items
+- IT Solutions for Marine Industry
 
-## Prerequisites
+**GSTIN**: 29AAYFN4510A1Z8
 
-- Node.js (v14 or higher)
-- MongoDB (running locally or MongoDB Atlas)
-- npm or yarn
+---
 
-## Installation
+## 📋 Features
 
-### Option 1: Install all dependencies at once
+### ✅ Professional Invoice Generation
+- Marine-themed professional design
+- Tax Invoice numbering system
+- GST (18%) calculation
+- Automatic round-off to nearest rupee
+- Amount in words (Indian format)
+- PDF export with company branding
+
+### ✅ Items Management
+- Add products/services to catalog
+- Manage inventory
+- Quick item selection for invoices
+
+### ✅ Invoice Dashboard
+- View all generated invoices
+- Track customer orders
+- Export and manage records
+
+### ✅ Database Integration
+- MongoDB Atlas cloud database
+- Secure data storage
+- Real-time synchronization
+
+---
+
+## 🚀 Quick Start
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/Shubham27082/INVOICE-MANAGEMENT-SYSTEM.git
+cd INVOICE-MANAGEMENT-SYSTEM
+
+# Install all dependencies
 npm install
 npm run install-all
 ```
 
-### Option 2: Install dependencies separately
+### Configuration
 
-1. Install root dependencies:
-```bash
-npm install
-```
-
-2. Install server dependencies:
-```bash
-cd server
-npm install
-```
-
-3. Install client dependencies:
-```bash
-cd client
-npm install
-```
-
-## Configuration
-
-1. Update the MongoDB connection string in `server/.env`:
-```
+Update `server/.env` with your MongoDB connection:
+```env
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/mern_app
+MONGO_URI=mongodb+srv://your_username:your_password@cluster.mongodb.net/invoice_management
 ```
 
-For MongoDB Atlas, use:
-```
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/mern_app
-```
-
-## Running the Application
-
-### Option 1: Run both frontend and backend concurrently (from root)
+### Running the Application
 
 ```bash
+# Run both frontend and backend
 npm run dev
 ```
 
-### Option 2: Run separately
-
-1. Start the backend server (from root):
-```bash
-npm run server
-```
-
-Or from server directory:
-```bash
-cd server
-npm run dev
-```
-
-2. Start the frontend (from root):
-```bash
-npm run client
-```
-
-Or from client directory:
-```bash
-cd client
-npm start
-```
-
-## API Endpoints
-
-- `GET /` - Returns "API running"
-- `GET /api/sample` - Sample API endpoint
-
-## Ports
-
+**Application URLs:**
 - Frontend: http://localhost:3000
-- Backend: http://localhost:5000
+- Backend API: http://localhost:5000
 
-## Features
+---
 
-- ✅ Express server with CORS enabled
-- ✅ MongoDB connection with Mongoose
-- ✅ JSON parsing middleware
-- ✅ Basic API routes
-- ✅ React frontend with API integration
-- ✅ Organized folder structure (models, routes, controllers, config)
-- ✅ Environment variables support
-- ✅ Development mode with hot reload
+## 📁 Project Structure
 
-## Technologies Used
+```
+invoice-management/
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/     # Invoice, Items, Dashboard components
+│   │   ├── App.js
+│   │   └── index.js
+│   └── package.json
+├── server/                 # Node.js backend
+│   ├── config/            # Database configuration
+│   ├── controllers/       # Business logic
+│   ├── models/            # MongoDB schemas
+│   ├── routes/            # API endpoints
+│   ├── .env              # Environment variables
+│   └── server.js
+├── reference/             # Invoice template reference
+│   ├── marine_invoice_template.jpeg
+│   └── README.md
+└── package.json          # Root scripts
+```
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- CORS
-- dotenv
+---
+
+## 🎨 Invoice Template
+
+The system generates invoices matching the official M Marine Services format:
+
+### Invoice Structure:
+- **Header**: Company name, tagline, GSTIN
+- **Invoice Details**: Tax Invoice No., Date
+- **Customer Section**: TO:- details (name, address, contact)
+- **Items Table**: SR.NO, DESCRIPTION, QTY, DENO, RATE, AMOUNT
+- **Calculations**: Subtotal, GST 18%, Total, Round off
+- **Footer**: Amount in words, Bank details, Contact information
+
+### Sample Invoice Number Format:
+`-020/17-07-2026/26NK`
+
+---
+
+## 🔧 Technologies Used
 
 ### Frontend
-- React
-- Axios
-- React Scripts
+- **React.js** - UI framework
+- **Axios** - HTTP client
+- **jsPDF** - PDF generation
+- **jsPDF-AutoTable** - Table formatting
 
-## Next Steps
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **MongoDB** - Database
+- **Mongoose** - ODM
+- **CORS** - Cross-origin support
+- **dotenv** - Environment variables
 
-1. Create more models in `server/models/`
-2. Add more routes in `server/routes/`
-3. Implement controllers in `server/controllers/`
-4. Build React components in `client/src/`
-5. Add authentication (JWT)
-6. Implement state management (Redux/Context API)
-7. Add form validation
-8. Deploy to production
+---
 
-## License
+## 📊 API Endpoints
+
+### Items
+- `GET /api/items` - Get all items
+- `POST /api/items` - Create new item
+- `PUT /api/items/:id` - Update item
+- `DELETE /api/items/:id` - Delete item
+
+### Invoices
+- `GET /api/invoices` - Get all invoices
+- `GET /api/invoices/:id` - Get specific invoice
+- `POST /api/invoices` - Create new invoice
+- `PUT /api/invoices/:id` - Update invoice
+- `DELETE /api/invoices/:id` - Delete invoice
+
+---
+
+## 💡 Usage Guide
+
+### Creating an Invoice:
+
+1. **Navigate to "Create Invoice" tab**
+2. **Fill Customer Details:**
+   - Customer name/organization
+   - Address and city
+   - Phone and email
+   - GSTIN (optional)
+
+3. **Add Items:**
+   - Select item from dropdown
+   - Edit quantity, denomination, and rate
+   - Items calculate automatically
+
+4. **Review Calculations:**
+   - Subtotal
+   - GST (18%)
+   - Round-off
+   - Final total
+
+5. **Generate:**
+   - Click "Download PDF" for instant export
+   - Click "Save Invoice" to store in database
+
+---
+
+## 🏦 Bank Details
+
+**For Payments:**
+- **Account No**: 0815073000000174
+- **IFSC Code**: SIBL0000815
+- **Bank**: SOUTH INDIAN BANK KARWAR
+
+---
+
+## 📞 Contact Information
+
+**M MARINE SERVICES**
+
+📱 +91 8149332389 / 8762850701  
+✉️ naikvishal063@gmail.com  
+📍 Off. 395 Gaonkarwada Near Ice Factory, Uttara Kannada Karnataka 581324
+
+---
+
+## 📝 License
 
 ISC
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+---
+
+## ⭐ Show Your Support
+
+Give a ⭐️ if this project helped you!
+
+---
+
+*Built with ❤️ for the marine engineering industry*

@@ -58,8 +58,12 @@ exports.createInvoice = async (req, res) => {
       phoneNumber,
       email,
       billingAddress,
+      customerGstin,
       lineItems,
-      calculations
+      calculations,
+      gst,
+      discount,
+      discountType
     } = req.body;
 
     // Validation
@@ -101,15 +105,19 @@ exports.createInvoice = async (req, res) => {
         name: customerName,
         phoneNumber,
         email,
-        billingAddress
+        billingAddress,
+        gstin: customerGstin || ''
       },
       items: lineItems,
       calculations: {
-        subtotal: parseFloat(calculations.subtotal),
-        totalGST: parseFloat(calculations.totalGST),
-        totalDiscount: parseFloat(calculations.totalDiscount),
-        grandTotal: parseFloat(calculations.grandTotal)
-      }
+        subtotal: parseFloat(calculations.subtotal) || 0,
+        totalGST: parseFloat(calculations.totalGST) || 0,
+        totalDiscount: parseFloat(calculations.totalDiscount) || 0,
+        grandTotal: parseFloat(calculations.grandTotal) || 0
+      },
+      gst: parseFloat(gst) || 18,
+      discount: parseFloat(discount) || 0,
+      discountType: discountType || 'fixed'
     });
 
     res.status(201).json({
@@ -117,6 +125,7 @@ exports.createInvoice = async (req, res) => {
       data: invoice
     });
   } catch (error) {
+    console.error('Invoice creation error:', error);
     if (error.name === 'ValidationError') {
       const messages = Object.values(error.errors).map(err => err.message);
       return res.status(400).json({

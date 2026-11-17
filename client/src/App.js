@@ -18,8 +18,8 @@ function App() {
     <div className="App">
       <header className="app-header">
         <div className="header-content">
-          <h1>Item Management System</h1>
-          <p>Manage your inventory with ease</p>
+          <h1>M MARINE SERVICES</h1>
+          <p>Marine Engineering Solutions & IT Services</p>
           
           <nav className="nav-tabs">
             <button 
